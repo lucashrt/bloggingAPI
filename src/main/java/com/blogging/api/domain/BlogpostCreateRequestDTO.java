@@ -1,8 +1,8 @@
 package com.blogging.api.domain;
 
-public record BlogpostRequestDTO(String title, String content, String category, String[] tags) {
+public record BlogpostCreateRequestDTO(String title, String content, String category, String[] tags) {
 
-    public BlogpostRequestDTO {
+    public BlogpostCreateRequestDTO {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Title cannot be null or blank");
         }
