@@ -1,6 +1,7 @@
 package com.blogging.api.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +61,20 @@ public class BlogpostService {
         }
         
         return existingBlogpost;
+    }
+
+    public Blogpost getSpecificBlogPost(UUID id) {
+        Blogpost existingBlogpost = this.blogpostRepository.findById(id).orElse(null);
+        return existingBlogpost;
+    }
+    
+    public List<Blogpost> getBlogPost(String term) {
+        if (term == null || term.isEmpty()) {
+            List<Blogpost> allBlogposts = this.blogpostRepository.findAll();
+            return allBlogposts;
+        } else {
+            List<Blogpost> allBlogposts = this.blogpostRepository.findByTerm(term);
+            return allBlogposts;
+        }
     }
 }

@@ -1,16 +1,19 @@
 package com.blogging.api.controllers;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blogging.api.domain.Blogpost;
@@ -52,5 +55,22 @@ public class blogpostController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/posts/{id}")
+    public ResponseEntity<?> getSpecificBlogPost(@PathVariable UUID id) {
+        Blogpost existingBlogpost = this.serviceBlogpost.getSpecificBlogPost(id);
+
+        if (existingBlogpost != null) {
+            return ResponseEntity.ok(existingBlogpost);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Blog post was not found.");
+        }
+    }
+
+    @GetMapping("/posts")
+    public ResponseEntity<List<Blogpost>> getBlogPost(@RequestParam(required = false) String term) {
+        List<Blogpost> allBlogposts = this.serviceBlogpost.getBlogPost(term);
+        return ResponseEntity.ok(allBlogposts);
     }
 }
