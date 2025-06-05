@@ -104,4 +104,4 @@ This API can be tested using [Insomnia](https://insomnia.rest).
 ## 👨‍💻 Author
 
 This project is part of the [Roadmap.sh Project Challenges](https://roadmap.sh/projects).  
-Developed by [Lucas Hartmann].
+Developed by **Lucas Hartmann**.
