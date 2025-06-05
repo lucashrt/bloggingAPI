@@ -72,8 +72,8 @@ The API currently manages a single entity: `Blogpost`.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/blogging-api.git
-   cd blogging-api
+   git clone https://github.com/lucashrt/bloggingAPI.git
+   cd bloggingAPI
    ```
 
 2. **Configure the database in `application.properties`**:
@@ -81,7 +81,6 @@ The API currently manages a single entity: `Blogpost`.
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
    spring.datasource.username=your_username
    spring.datasource.password=your_password
-   spring.jpa.hibernate.ddl-auto=update
    ```
 
 3. **Run the project**:
